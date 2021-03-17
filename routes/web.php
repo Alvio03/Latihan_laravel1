@@ -18,6 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+
+Route::get('/profile', [App\Htpp\controllers\ProfileController::class, 'index']);
+Route::get('/home', [App\Htpp\controllers\HomeController::class, 'index']);
+Route::get('/admin/home', [App\Htpp\controllers\AdminController::class, 'index']);
+->name('admin.home');
+->middleware('is_admin');
 // Route::resources('/post', [PostController::class, 'index']);
 
 // Route::get('/user/{name?}', function ($name = null){
